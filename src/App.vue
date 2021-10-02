@@ -1,16 +1,15 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App!"/>
+<template>  
+  <sort arr/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import sort from './components/sort.vue'
+//import mergeSort from './mergeSort'
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    sort
+  }    
 }
 </script>
 
