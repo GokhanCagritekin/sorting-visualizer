@@ -1,10 +1,9 @@
 <template>  
-  <sort arr/>
+  <sort/>
 </template>
 
 <script>
 import sort from './components/sort.vue'
-//import mergeSort from './mergeSort'
 export default {
   name: 'App',
   components: {

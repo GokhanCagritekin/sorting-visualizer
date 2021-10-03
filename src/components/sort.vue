@@ -1,16 +1,20 @@
 <template>
   <div>
     <h1>{{ arr }}</h1>
+    <h2>{{ sortedarr }}</h2>
   </div>
 </template>
 
 <script>
 import mergeSort from '../..//src/mergeSort'
+import generateRandomArray from '../..//src/generateRandomArray'
+let array = generateRandomArray();
 export default {
   name: 'sort', 
   data() {
     return {
-      arr : mergeSort([2,3,1,4343,534,32,1,443,54,3])
+        arr : Array.from(array),
+        sortedarr : mergeSort(array)
     }
   },
 }
