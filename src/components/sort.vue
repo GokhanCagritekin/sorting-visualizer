@@ -1,11 +1,6 @@
 <template>
-<div>    
-  <div v-show="false">
-    <h1>{{ arr }}</h1>
-    </div>
-    <div v-show="false">
-    <h1>{{ sortedarr }}</h1>
-     </div>
+<div>
+    <h1>{{ sortedarr }}</h1>     
     <div>
         <button id="buttongen" v-on:click="regenerateRandomArray">Generate Array</button>
         <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button>                 
@@ -36,8 +31,7 @@ export default {
         generateBlocks(this.arr)
     },
     reMergeSort: function(){
-        this.sortedarr = mergeSort((this.arr))
-        generateBlocks(this.arr)
+        this.sortedarr = mergeSort((this.arr))        
     },    
   }     
 }
@@ -48,7 +42,7 @@ export default {
 
 .box{
     height: 555px;
-    width: 5px;
+    width: 10px;
     margin-left: 3px;
     background-color: rgba(66, 134, 244, 0.8);
     color: transparent;

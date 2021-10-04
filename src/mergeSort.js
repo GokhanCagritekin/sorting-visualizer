@@ -22,7 +22,7 @@ function mergeSort(arr){
     return arr;   
 }
 
-function merge(leftArr, rightArr, arr){
+async function merge(leftArr, rightArr, arr){
     let l = 0;
     let r = 0;
     let k = 0;
@@ -30,23 +30,55 @@ function merge(leftArr, rightArr, arr){
     while(l < leftArr.length && r < rightArr.length){
         if(leftArr[l] <= rightArr[r]){
             arr[k] = leftArr[l];
+            let array_ele = document.getElementById(`box${k}`);
+            array_ele.style.height = `${leftArr[l] * 7}px`;
+            array_ele.style.backgroundColor = '#FF4949';
             l++;
-            k++;            
+            k++;
+            await new Promise((resolve) =>
+                setTimeout(() => {                    
+                    resolve(); 
+                }, 200)
+            );                                 
         }else{
-            arr[k] = rightArr[r];
+            arr[k] = rightArr[r];                                         
+            let array_ele = document.getElementById(`box${k}`);
+            array_ele.style.height = `${rightArr[r] * 7}px`;
+            array_ele.style.backgroundColor = '#FF4949';
             r++;
-            k++;            
+            k++; 
+            await new Promise((resolve) =>
+                setTimeout(() => {                    
+                    resolve();                    
+                }, 200)
+            );                        
         }
     }
     while(l < leftArr.length){
-        arr[k] = leftArr[l];
+        arr[k] = leftArr[l];                                                  
+        let array_ele = document.getElementById(`box${k}`);
+        array_ele.style.height = `${leftArr[l] * 7}px`;
+        array_ele.style.backgroundColor = '#FF4949';
         l++;
-        k++
+        k++;
+        await new Promise((resolve) =>
+            setTimeout(() => {                
+                resolve();                    
+            }, 200)
+        );               
     }
     while(r < rightArr.length){
-        arr[k] = rightArr[r];
+        arr[k] = rightArr[r];                                                     
+        let array_ele = document.getElementById(`box${k}`);
+        array_ele.style.height = `${rightArr[r] * 7}px`;
+        array_ele.style.backgroundColor = '#FF4949';
         r++;
-        k++
+        k++;
+        await new Promise((resolve) =>
+            setTimeout(() => {                
+                resolve();              
+            }, 200)
+        );             
     }
 }
 
