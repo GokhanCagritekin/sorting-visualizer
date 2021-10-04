@@ -8,8 +8,7 @@
      </div>
     <div>
         <button id="buttongen" v-on:click="regenerateRandomArray">Generate Array</button>
-        <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button> 
-        <button id="changewidth" v-on:click="changeWidth">Change Width</button>             
+        <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button>                 
     </div>
     <br>    
     <br>
@@ -34,14 +33,12 @@ export default {
  methods:{
     regenerateRandomArray: function () {
         this.arr = generateRandomArray()
+        generateBlocks(this.arr)
     },
     reMergeSort: function(){
         this.sortedarr = mergeSort((this.arr))
         generateBlocks(this.arr)
-    },
-    changeWidth: function(){
-        generateBlocks(this.arr)        
-    }
+    },    
   }     
 }
 </script>
