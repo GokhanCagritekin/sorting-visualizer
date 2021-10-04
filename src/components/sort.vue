@@ -1,7 +1,11 @@
 <template>
-  <div>
+<div>
+  <div v-show="arr!=[]">
     <h1>{{ arr }}</h1>
-    <h2>{{ sortedarr }}</h2>
+    </div>
+    <div v-show="sortedarr!=[]">
+    <h1>{{ sortedarr }}</h1>
+     </div>
     <div id="buttongen">
         <button v-on:click="regenerateRandomArray">Generate Array</button>        
     </div>
