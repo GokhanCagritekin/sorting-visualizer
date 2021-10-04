@@ -1,29 +1,26 @@
 <template>
-<div>
-    <div id="idbox" class="box">box</div>
-    <div id="changewidth">
-        <button v-on:click="changeWidth">Change Width</button>        
-    </div>
-    <br>
-  <div v-show="arr.length != 0">
+<div>    
+  <div v-show="false">
     <h1>{{ arr }}</h1>
     </div>
-    <div v-show="sortedarr.length != 0">
+    <div v-show="false">
     <h1>{{ sortedarr }}</h1>
      </div>
-    <div id="buttongen">
-        <button v-on:click="regenerateRandomArray">Generate Array</button>        
+    <div>
+        <button id="buttongen" v-on:click="regenerateRandomArray">Generate Array</button>
+        <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button> 
+        <button id="changewidth" v-on:click="changeWidth">Change Width</button>             
     </div>
+    <br>    
     <br>
-    <div id="buttonsort">
-        <button v-on:click="reMergeSort">Sort Array</button>        
-    </div> 
+    <div id="idbox"></div>       
   </div>
 </template>
 
 <script>
 import mergeSort from '../..//src/mergeSort'
 import generateRandomArray from '../..//src/generateRandomArray'
+import generateBlocks from '../..//src/generateBlocks'
 
 export default {
   name: 'sort',
@@ -39,10 +36,11 @@ export default {
         this.arr = generateRandomArray()
     },
     reMergeSort: function(){
-        this.sortedarr = mergeSort(Array.from(this.arr))
+        this.sortedarr = mergeSort((this.arr))
+        generateBlocks(this.arr)
     },
     changeWidth: function(){
-        document.getElementById('idbox').style.width = '100px'
+        generateBlocks(this.arr)        
     }
   }     
 }
@@ -51,12 +49,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
-
-
 .box{
-    background-color: #2D9CDB;
-    border: 0 solid #27AE60;
-    width: 600px;
+    height: 555px;
+    width: 5px;
+    margin-left: 3px;
+    background-color: rgba(66, 134, 244, 0.8);
+    color: transparent;
+    font-size: 8px;
+    padding-top: 7px;
+    font-family: sans-serif;
+    font-weight: 700;
+    display: inline-block;
 }
 
 </style>
