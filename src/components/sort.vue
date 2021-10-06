@@ -31,7 +31,7 @@ export default {
         generateBlocks(this.arr)
     },
     reMergeSort: function(){
-        this.sortedarr = mergeSort((this.arr))        
+        this.sortedarr = mergeSort((this.arr), 0)        
     },    
   }     
 }
@@ -40,11 +40,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
-.box{
-    height: 555px;
+.box{    
     width: 10px;
     margin-left: 3px;
-    background-color: rgba(66, 134, 244, 0.8);
+    background-color: #0000CD;
     color: transparent;
     font-size: 8px;
     padding-top: 7px;
