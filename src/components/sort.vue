@@ -31,7 +31,7 @@ export default {
         generateBlocks(this.arr)
     },
     reMergeSort: function(){
-        this.sortedarr = mergeSort((this.arr), 0)        
+        this.sortedarr = mergeSort((this.arr))        
     },    
   }     
 }

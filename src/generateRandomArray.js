@@ -1,6 +1,6 @@
 function generateRandomArray(){
     let arr = [];
-    for(let i = 0 ; i < 8; i++){
+    for(let i = 0 ; i < 40; i++){
         arr[i] = i + 1;
     }
     return shuffle(arr);
