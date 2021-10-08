@@ -11,6 +11,7 @@ function generateBlocks(arr){
         array_ele.style.height = `${arr[i] * 7}px`;           
         element.appendChild(array_ele);
     }
+    element.style.left = `${(screen.width-(arr.length*10))/2}px`; 
 }
 
 export default generateBlocks;

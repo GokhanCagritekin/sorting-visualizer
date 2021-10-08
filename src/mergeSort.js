@@ -1,4 +1,4 @@
-let ANIMATION_SPEED_MS = 30;
+const ANIMATION_SPEED_MS = 60;
 
 function mergeSortHelper( mainArray,
   startIdx,
