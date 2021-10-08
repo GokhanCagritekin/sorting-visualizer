@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>{{ sortedarr }}</h1>     
+    <h1>{{ arr }}</h1>     
     <div>
         <button id="buttongen" v-on:click="regenerateRandomArray">Generate Array</button>
         <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button>                 
@@ -21,20 +21,23 @@ export default {
   data () {
     return {
         arr:[],
-        sortedarr: []
+        sortedarr: [],
+        min: 5,
+        max: 45,               
         //sortedarr: mergeSort(Array.from(array))
     }
 }, 
  methods:{
     regenerateRandomArray: function () {
-        this.arr = generateRandomArray()
-        generateBlocks(this.arr)
+        this.arr = generateRandomArray(this.min, this.max)
+        generateBlocks(this.arr)        
     },
     reMergeSort: function(){
-        this.sortedarr = mergeSort((this.arr))        
+        this.sortedarr = mergeSort(this.arr)        
     },    
   }     
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
