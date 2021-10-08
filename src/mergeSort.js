@@ -1,4 +1,4 @@
-const ANIMATION_SPEED_MS = 60;
+const ANIMATION_SPEED_MS = 120;
 
 function mergeSortHelper( mainArray,
   startIdx,
@@ -19,16 +19,24 @@ function mergeSort(mainArray){
     const auxiliaryArray = mainArray.slice();
     mergeSortHelper(auxiliaryArray, 0, mainArray.length - 1, mainArray, animations);
     for(let i = 0; i < animations.length; i++){
-        setTimeout(() => {
-            const array_ele = document.getElementById("idbox").childNodes;
-            //const array_ele_R = document.getElementById(`box${animations[i][1] * 7}`);
-            array_ele[animations[i][0]].style.height = `${animations[i][1] * 7}px`;
-            //array_ele.id = `box${animations[i][1] * 7}`;
-            //array_ele_R.style.height = `${animations[i][0] * 7}px`;
-            //array_ele_R.id = `box${animations[i][0] * 7}`;            
-          }, i * ANIMATION_SPEED_MS)    
+        const isColorChange = i % 3 !== 2;
+        const box = document.getElementById("idbox").childNodes;        
+        const color = i % 3 === 0 ? '#FF4949' : '#0000CD';        
+        if (isColorChange) {                                                         
+            setTimeout(() => {
+                const box1Style = box[animations[i][0]].style;
+                const box2Style = box[animations[i][1]].style;
+                box1Style.backgroundColor = color;
+                box2Style.backgroundColor = color;
+              }, i * ANIMATION_SPEED_MS);
+            }else{
+                setTimeout(() => {
+                    box[animations[i][0]].style.height = `${animations[i][1] * 7}px`;
+                    //box[animations[i][0]].style.backgroundColor = '#32CD32';
+                  }, i * ANIMATION_SPEED_MS);
+            }                             
+        }               
     }       
-}
 
 function merge(mainArray,
     startIdx,
@@ -42,8 +50,8 @@ function merge(mainArray,
     let j = middleIdx + 1;
   
     while (i <= middleIdx && j <= endIdx) {        
-        //animations.push([i, j]);        
-        //animations.push([i, j]);
+        animations.push([i, j]);        
+        animations.push([i, j]);
         if (auxiliaryArray[i] <= auxiliaryArray[j]) {        
           animations.push([k, auxiliaryArray[i]]);
           mainArray[k++] = auxiliaryArray[i++];
@@ -53,14 +61,14 @@ function merge(mainArray,
         }
       }
       while (i <= middleIdx) {       
-        //animations.push([i, i]);       
-        //animations.push([i, i]);       
+        animations.push([i, i]);       
+        animations.push([i, i]);       
         animations.push([k, auxiliaryArray[i]]);
         mainArray[k++] = auxiliaryArray[i++];
       }
       while (j <= endIdx) {        
-        //animations.push([j, j]);        
-        //animations.push([j, j]);       
+        animations.push([j, j]);        
+        animations.push([j, j]);       
         animations.push([k, auxiliaryArray[j]]);
         mainArray[k++] = auxiliaryArray[j++];
       }

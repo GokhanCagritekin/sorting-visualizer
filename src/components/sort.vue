@@ -25,7 +25,7 @@ export default {
         arr:[],
         sortedarr: [],
         min: 5,
-        max: 40,               
+        max: 13,               
         //sortedarr: mergeSort(Array.from(array))
     }
 }, 
