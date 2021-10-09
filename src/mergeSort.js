@@ -30,12 +30,12 @@ function mergeSort(mainArray, ANIMATION_SPEED_MS){
               }, i * ANIMATION_SPEED_MS);
             }else{
                 setTimeout(() => {
-                    box[animations[i][0]].style.height = `${animations[i][1] * 7}px`;
+                    box[animations[i][0]].style.height = `${animations[i][1] * 2}px`;
                     box[animations[i][0]].style.backgroundColor = '#32CD32';
                   }, i * ANIMATION_SPEED_MS);
                   setTimeout(() => {                    
                     box[animations[i][0]].style.backgroundColor = '#0000CD';
-                  }, i * ANIMATION_SPEED_MS * 1.01);
+                  }, i * ANIMATION_SPEED_MS * (auxiliaryArray.length + 0.15) / (auxiliaryArray.length));
             }                             
         }               
     }       

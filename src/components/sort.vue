@@ -1,9 +1,8 @@
 <template>
-<div>
-  <h1>{{arr.length}}</h1>     
+<div>   
     <div>
-        <label> Change Array Size </label>      
-        <input type="range" min="9" max="55" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">
+        <label> Change Array Size & Speed </label>      
+        <input type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">
         <button id="buttongen" v-on:click="regenerateRandomArray">Generate Array</button>
         <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button>                 
     </div>
@@ -16,12 +15,12 @@
   <br>
   <br>         
   </div>
-  <div style="position: sticky;" id="idbox"></div>
+  <div style="position: sticky; heigth:300px;" id="idbox"></div>
   <br>
   <label> Auxiliary Array </label>
   <br>
   <br> 
-  <div style="position: sticky;" id="idbox2"></div> 
+  <div style="position: sticky; heigth:300px;" id="idbox2"></div> 
      
 </template>
 
@@ -36,15 +35,14 @@ export default {
     return {
         arr:[],
         sortedarr: [],
-        min: 5,
-        max: 43,
+        arrLength:4,
         ANIMATION_SPEED_MS: 30,              
         //sortedarr: mergeSort(Array.from(array))
     }
 }, 
  methods:{
     regenerateRandomArray: function () {
-        this.arr = generateRandomArray(this.min, this.max)
+        this.arr = generateRandomArray(this.arrLength)
         generateBlocks(this.arr)        
     },
     reMergeSort: function(){
@@ -53,7 +51,7 @@ export default {
     },
     changeArrayLength: function(){
       const element = document.getElementById("changeSize");
-      this.max = element.value ;      
+      this.arrLength = element.value ;      
     }    
   }     
 }
@@ -63,9 +61,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
-.box{    
-    width: 10px;
-    margin-left: 3px;
+.box{            
+    margin: 0 1px;
     background-color: #0000CD;
     color: transparent;
     font-size: 8px;

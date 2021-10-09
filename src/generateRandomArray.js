@@ -1,7 +1,7 @@
-function generateRandomArray(min, max){
+function generateRandomArray(length){
     let arr = [];
-    for(let i = 0 ; i < max - min; i++){
-        arr[i] = randomIntFromInterval(min, max)
+    for(let i = 0 ; i < length; i++){
+        arr[i] = randomIntFromInterval(5, 90)
     }
     return arr;    
 }
