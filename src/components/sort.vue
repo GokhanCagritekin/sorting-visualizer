@@ -2,17 +2,17 @@
 <html>
   <body>
     <div>   
-    <div>
+      <div>
         <label> Change Array Size & Speed </label>      
-        <input type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">       
-        <button class="button" id="buttonsort" v-on:click="reMergeSort">Sort</button>                 
-    </div>        
-  </div>
-  <div class="bottom">    
-  <label> Main Array </label>    
-  <div class="box1" id="idbox"></div>
-  <label> Auxiliary Array </label>
-  <div class="box2" id="idbox2"></div>   
+        <input :disabled="isdisabled" type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">       
+        <button class="button" id="buttonsort" v-on:click="reMergeSort" :disabled="isdisabled">Sort</button>                 
+      </div>        
+    </div>
+    <div class="bottom">    
+      <label> Main Array </label>    
+      <div class="box1" id="idbox"></div>
+      <label> Auxiliary Array </label>
+      <div class="box2" id="idbox2"></div>   
     </div>  
   </body>
 </html> 
@@ -30,7 +30,8 @@ export default {
         arr:[],
         sortedarr: [],
         arrLength:24,
-        ANIMATION_SPEED_MS: 30,              
+        ANIMATION_SPEED_MS: 30,
+        isdisabled:false,              
         //sortedarr: mergeSort(Array.from(array))
     }
 }, 
@@ -40,8 +41,12 @@ export default {
         generateBlocks(this.arr)        
     },
     reMergeSort: function(){
+        this.isdisabled = true;
         this.ANIMATION_SPEED_MS = (1000 / this.arr.length)
-        this.sortedarr = mergeSort(this.arr, this.ANIMATION_SPEED_MS)        
+        const animLength = mergeSort(this.arr, this.ANIMATION_SPEED_MS)
+         setTimeout(() => {
+          this.isdisabled = false;
+        }, (animLength + 1) * this.ANIMATION_SPEED_MS);         
     },
     changeArrayLength: function(){
       const element = document.getElementById("changeSize");
@@ -56,7 +61,6 @@ export default {
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
 .box{            
