@@ -1,7 +1,9 @@
 <template>
 <div>
-  <h1>{{arr}}</h1>     
+  <h1>{{arr.length}}</h1>     
     <div>
+        <label> Change Array Size </label>      
+        <input type="range" min="9" max="55" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">
         <button id="buttongen" v-on:click="regenerateRandomArray">Generate Array</button>
         <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button>                 
     </div>
@@ -38,7 +40,11 @@ export default {
     },
     reMergeSort: function(){
         this.sortedarr = mergeSort(this.arr)        
-    },    
+    },
+    changeArrayLength: function(){
+      const element = document.getElementById("changeSize");
+      this.max = element.value ;
+    }    
   }     
 }
 
