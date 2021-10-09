@@ -1,5 +1,6 @@
 <template>
-<div>     
+<div>
+  <h1>{{arr}}</h1>     
     <div>
         <button id="buttongen" v-on:click="regenerateRandomArray">Generate Array</button>
         <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button>                 
@@ -10,7 +11,8 @@
     <br>
     <br>         
   </div>
-  <div id="idbox"></div>  
+  <div style="position: sticky;" id="idbox">
+    </div>  
 </template>
 
 <script>
@@ -25,7 +27,7 @@ export default {
         arr:[],
         sortedarr: [],
         min: 5,
-        max: 13,               
+        max: 43,               
         //sortedarr: mergeSort(Array.from(array))
     }
 }, 
