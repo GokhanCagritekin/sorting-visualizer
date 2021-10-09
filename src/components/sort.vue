@@ -29,7 +29,8 @@ export default {
         arr:[],
         sortedarr: [],
         min: 5,
-        max: 43,               
+        max: 43,
+        ANIMATION_SPEED_MS: 30,              
         //sortedarr: mergeSort(Array.from(array))
     }
 }, 
@@ -39,11 +40,12 @@ export default {
         generateBlocks(this.arr)        
     },
     reMergeSort: function(){
-        this.sortedarr = mergeSort(this.arr)        
+        this.ANIMATION_SPEED_MS = (500 / this.arr.length)
+        this.sortedarr = mergeSort(this.arr, this.ANIMATION_SPEED_MS)        
     },
     changeArrayLength: function(){
       const element = document.getElementById("changeSize");
-      this.max = element.value ;
+      this.max = element.value ;      
     }    
   }     
 }

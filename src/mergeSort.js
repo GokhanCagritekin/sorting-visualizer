@@ -1,5 +1,3 @@
-const ANIMATION_SPEED_MS = 30;
-
 function mergeSortHelper( mainArray,
   startIdx,
   endIdx,
@@ -14,7 +12,7 @@ function mergeSortHelper( mainArray,
     merge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations);  
 }
 
-function mergeSort(mainArray){
+function mergeSort(mainArray, ANIMATION_SPEED_MS){
     const animations = [];    
     const auxiliaryArray = mainArray.slice();
     mergeSortHelper(auxiliaryArray, 0, mainArray.length - 1, mainArray, animations);
