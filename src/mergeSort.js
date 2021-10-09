@@ -18,12 +18,13 @@ function mergeSort(mainArray, ANIMATION_SPEED_MS){
     mergeSortHelper(auxiliaryArray, 0, mainArray.length - 1, mainArray, animations);
     for(let i = 0; i < animations.length; i++){
         const isColorChange = i % 3 !== 2;
-        const box = document.getElementById("idbox").childNodes;        
+        const box = document.getElementById("idbox").childNodes;
+        const box2 = document.getElementById("idbox2").childNodes;         
         const color = i % 3 === 0 ? '#FF4949' : '#0000CD';        
         if (isColorChange) {                                                         
             setTimeout(() => {
                 const box1Style = box[animations[i][0]].style;
-                const box2Style = box[animations[i][1]].style;
+                const box2Style = box2[animations[i][1]].style;
                 box1Style.backgroundColor = color;
                 box2Style.backgroundColor = color;
               }, i * ANIMATION_SPEED_MS);

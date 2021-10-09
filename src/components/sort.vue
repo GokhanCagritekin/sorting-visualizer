@@ -11,10 +11,18 @@
     <br>
     <br>
     <br>
-    <br>         
+    <br>
+  <label> Main Array </label>
+  <br>
+  <br>         
   </div>
-  <div style="position: sticky;" id="idbox">
-    </div>  
+  <div style="position: sticky;" id="idbox"></div>
+  <br>
+  <label> Auxiliary Array </label>
+  <br>
+  <br> 
+  <div style="position: sticky;" id="idbox2"></div> 
+     
 </template>
 
 <script>
@@ -40,7 +48,7 @@ export default {
         generateBlocks(this.arr)        
     },
     reMergeSort: function(){
-        this.ANIMATION_SPEED_MS = (500 / this.arr.length)
+        this.ANIMATION_SPEED_MS = (1000 / this.arr.length)
         this.sortedarr = mergeSort(this.arr, this.ANIMATION_SPEED_MS)        
     },
     changeArrayLength: function(){

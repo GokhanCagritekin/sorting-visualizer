@@ -11,7 +11,20 @@ function generateBlocks(arr){
         array_ele.style.height = `${arr[i] * 7}px`;           
         element.appendChild(array_ele);
     }
-    element.style.left = `${(screen.width-(arr.length*10))/2}px`; 
+    element.style.left = `${(screen.width-(arr.length*10))/2}px`;
+    let element2 = document.getElementById('idbox2');
+    var child2 = element2.lastElementChild; 
+    while (child2) {
+        element2.removeChild(child2);
+        child2 = element2.lastElementChild;
+    }    
+    for(let i = 0 ; i < arr.length; i++){        
+        var array_ele2 = document.createElement("div");    
+        array_ele2.classList.add("box");      
+        array_ele2.style.height = `${arr[i] * 7}px`;           
+        element2.appendChild(array_ele2);
+    }
+    element2.style.left = `${(screen.width-(arr.length*10))/2}px`;  
 }
 
 export default generateBlocks;
