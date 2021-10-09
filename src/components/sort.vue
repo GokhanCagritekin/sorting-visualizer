@@ -3,6 +3,7 @@
   <body>
     <div>   
       <div>
+        <button class="button" id="buttongen" v-on:click="regenerateRandomArray" :disabled="isdisabled">Generate New Array</button>
         <label> Change Array Size & Speed </label>      
         <input :disabled="isdisabled" type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">       
         <button class="button" id="buttonsort" v-on:click="reMergeSort" :disabled="isdisabled">Merge Sort</button>                 
