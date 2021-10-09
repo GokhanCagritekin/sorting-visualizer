@@ -8,8 +8,7 @@ function generateBlocks(arr){
     var dummy_ele = document.createElement("div");
     dummy_ele.classList.add("box");      
     dummy_ele.style.height = `180px`;
-    dummy_ele.style.width = `0.01px`;  
-    //dummy_ele.style.display = "none"; 
+    dummy_ele.style.width = `0.01px`;      
     for(let i = 0 ; i < arr.length; i++){        
         var array_ele = document.createElement("div");    
         array_ele.classList.add("box");      

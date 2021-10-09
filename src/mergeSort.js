@@ -32,10 +32,10 @@ function mergeSort(mainArray, ANIMATION_SPEED_MS){
             }else{
                 setTimeout(() => {                   
                     box[animations[i][0]].style.height = `${animations[i][1] * 2}px`;
-                    box[animations[i][0]].style.backgroundColor = '#32CD32';
+                    //box[animations[i][0]].style.backgroundColor = '#32CD32';
                   }, i * ANIMATION_SPEED_MS);
                   setTimeout(() => {                    
-                    box[animations[i][0]].style.backgroundColor = '#0000CD';
+                    //box[animations[i][0]].style.backgroundColor = '#0000CD';
                   }, i * ANIMATION_SPEED_MS * (auxiliaryArray.length + 0.2) / (auxiliaryArray.length));
             }                             
         }
@@ -82,9 +82,18 @@ function merge(mainArray,
         mainArray[k++] = auxiliaryArray[j++];
       }
     const audio2 = document.getElementById("myAudio2");
-    setTimeout(() => {
-      audio2.play();    
-    }, animations.length * ANIMATION_SPEED_MS);  
+    const box = document.getElementById("idbox").childNodes;
+    for(let idx = startIdx; idx <= endIdx; idx++){              
+      setTimeout(() => {
+        audio2.play(); 
+        box[idx].style.backgroundColor = '#FF8C00';           
+      }, animations.length * ANIMATION_SPEED_MS);
+      setTimeout(() => {              
+          box[idx].style.backgroundColor = '#0000CD';                                 
+      }, (animations.length * ANIMATION_SPEED_MS + 100));  
+    }
+    
+ 
 }
 
 // function generateBlocks(arr, k){
