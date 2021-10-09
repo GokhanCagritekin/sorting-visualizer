@@ -5,7 +5,7 @@
       <div>
         <label> Change Array Size & Speed </label>      
         <input :disabled="isdisabled" type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">       
-        <button class="button" id="buttonsort" v-on:click="reMergeSort" :disabled="isdisabled">Sort</button>                 
+        <button class="button" id="buttonsort" v-on:click="reMergeSort" :disabled="isdisabled">Merge Sort</button>                 
       </div>        
     </div>
     <div class="bottom">    
@@ -13,7 +13,15 @@
       <div class="box1" id="idbox"></div>
       <label> Auxiliary Array </label>
       <div class="box2" id="idbox2"></div>   
-    </div>  
+    </div>
+    <div style="display:none">
+      <audio id="myAudio" controls>
+        <source src="../..//src/assets/DM-CGS-45.wav" type="audio/wav">  
+      </audio>
+      <audio id="myAudio2" controls>
+        <source src="../..//src/assets/DM-CGS-34.wav" type="audio/wav">  
+      </audio>
+      </div>  
   </body>
 </html> 
 </template>

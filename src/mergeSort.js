@@ -2,34 +2,35 @@ function mergeSortHelper( mainArray,
   startIdx,
   endIdx,
   auxiliaryArray,
-  animations,){
+  animations,
+  ANIMATION_SPEED_MS){
     
     if (startIdx === endIdx) return;
     const middleIdx = Math.floor((startIdx + endIdx) / 2);
 
-    mergeSortHelper(auxiliaryArray, startIdx, middleIdx, mainArray, animations);
-    mergeSortHelper(auxiliaryArray, middleIdx + 1, endIdx, mainArray, animations);
-    merge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations);  
+    mergeSortHelper(auxiliaryArray, startIdx, middleIdx, mainArray, animations, ANIMATION_SPEED_MS);
+    mergeSortHelper(auxiliaryArray, middleIdx + 1, endIdx, mainArray, animations, ANIMATION_SPEED_MS);
+    merge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations, ANIMATION_SPEED_MS);  
 }
 
 function mergeSort(mainArray, ANIMATION_SPEED_MS){
     const animations = [];    
     const auxiliaryArray = mainArray.slice();
-    mergeSortHelper(auxiliaryArray, 0, mainArray.length - 1, mainArray, animations);
+    mergeSortHelper(auxiliaryArray, 0, mainArray.length - 1, mainArray, animations ,ANIMATION_SPEED_MS);
     for(let i = 0; i < animations.length; i++){
         const isColorChange = i % 3 !== 2;
         const box = document.getElementById("idbox").childNodes;
-        const box2 = document.getElementById("idbox2").childNodes;        
+        const box2 = document.getElementById("idbox2").childNodes;                         
         const color = i % 3 === 0 ? '#FF4949' : '#0000CD';        
         if (isColorChange) {                                                         
             setTimeout(() => {
                 const box1Style = box2[animations[i][0]].style;
                 const box2Style = box2[animations[i][1]].style;
                 box1Style.backgroundColor = color;
-                box2Style.backgroundColor = color;
+                box2Style.backgroundColor = color;                
               }, i * ANIMATION_SPEED_MS);
             }else{
-                setTimeout(() => {
+                setTimeout(() => {                   
                     box[animations[i][0]].style.height = `${animations[i][1] * 2}px`;
                     box[animations[i][0]].style.backgroundColor = '#32CD32';
                   }, i * ANIMATION_SPEED_MS);
@@ -38,6 +39,10 @@ function mergeSort(mainArray, ANIMATION_SPEED_MS){
                   }, i * ANIMATION_SPEED_MS * (auxiliaryArray.length + 0.2) / (auxiliaryArray.length));
             }                             
         }
+        setTimeout(() => {
+          const audio = document.getElementById("myAudio");
+          audio.play();                             
+        }, animations.length * ANIMATION_SPEED_MS);        
         return animations.length;                            
     }       
 
@@ -46,7 +51,8 @@ function merge(mainArray,
     middleIdx,
     endIdx,
     auxiliaryArray,
-    animations,){
+    animations,
+    ANIMATION_SPEED_MS,){
 
     let k = startIdx;
     let i = startIdx;
@@ -75,6 +81,10 @@ function merge(mainArray,
         animations.push([k, auxiliaryArray[j]]);
         mainArray[k++] = auxiliaryArray[j++];
       }
+    const audio2 = document.getElementById("myAudio2");
+    setTimeout(() => {
+      audio2.play();    
+    }, animations.length * ANIMATION_SPEED_MS);  
 }
 
 // function generateBlocks(arr, k){
