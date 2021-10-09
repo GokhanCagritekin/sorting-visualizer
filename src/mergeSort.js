@@ -32,8 +32,11 @@ function mergeSort(mainArray){
             }else{
                 setTimeout(() => {
                     box[animations[i][0]].style.height = `${animations[i][1] * 7}px`;
-                    //box[animations[i][0]].style.backgroundColor = '#32CD32';
+                    box[animations[i][0]].style.backgroundColor = '#32CD32';
                   }, i * ANIMATION_SPEED_MS);
+                  setTimeout(() => {                    
+                    box[animations[i][0]].style.backgroundColor = '#0000CD';
+                  }, i * ANIMATION_SPEED_MS * 1.01);
             }                             
         }               
     }       
