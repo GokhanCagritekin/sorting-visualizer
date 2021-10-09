@@ -14,7 +14,7 @@ function generateBlocks(arr){
         var array_ele = document.createElement("div");    
         array_ele.classList.add("box");      
         array_ele.style.height = `${arr[i] * 2}px`; 
-        array_ele.style.width = `${400 / arr.length}px`;          
+        array_ele.style.width = `${600 / arr.length}px`;          
         element.append(array_ele);
     }
     element.append(dummy_ele)
@@ -29,7 +29,7 @@ function generateBlocks(arr){
         var array_ele2 = document.createElement("div");    
         array_ele2.classList.add("box");      
         array_ele2.style.height = `${arr[i] * 2}px`; 
-        array_ele2.style.width = `${400 / arr.length}px`;           
+        array_ele2.style.width = `${600 / arr.length}px`;           
         element2.append(array_ele2);
     }
     element2.style.left = `${(screen.width-(arr.length*10))/2}px`;  

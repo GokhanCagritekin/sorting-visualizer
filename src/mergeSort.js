@@ -35,7 +35,7 @@ function mergeSort(mainArray, ANIMATION_SPEED_MS){
                   }, i * ANIMATION_SPEED_MS);
                   setTimeout(() => {                    
                     box[animations[i][0]].style.backgroundColor = '#0000CD';
-                  }, i * ANIMATION_SPEED_MS * (auxiliaryArray.length + 0.15) / (auxiliaryArray.length));
+                  }, i * ANIMATION_SPEED_MS * (auxiliaryArray.length + 0.2) / (auxiliaryArray.length));
             }                             
         }               
     }       

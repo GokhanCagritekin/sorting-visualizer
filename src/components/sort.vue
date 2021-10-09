@@ -1,27 +1,21 @@
 <template>
-<div>   
+<html>
+  <body>
+    <div>   
     <div>
         <label> Change Array Size & Speed </label>      
-        <input type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">
-        <button id="buttongen" v-on:click="regenerateRandomArray">Generate Array</button>
-        <button id="buttonsort" v-on:click="reMergeSort">Sort Array</button>                 
-    </div>
-    <br>    
-    <br>
-    <br>
-    <br>
-    <br>
-  <label> Main Array </label>
-  <br>
-  <br>         
+        <input type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">       
+        <button class="button" id="buttonsort" v-on:click="reMergeSort">Sort</button>                 
+    </div>        
   </div>
-  <div style="position: sticky; heigth:300px;" id="idbox"></div>
-  <br>
+  <div class="bottom">    
+  <label> Main Array </label>    
+  <div class="box1" id="idbox"></div>
   <label> Auxiliary Array </label>
-  <br>
-  <br> 
-  <div style="position: sticky; heigth:300px;" id="idbox2"></div> 
-     
+  <div class="box2" id="idbox2"></div>   
+    </div>  
+  </body>
+</html> 
 </template>
 
 <script>
@@ -35,7 +29,7 @@ export default {
     return {
         arr:[],
         sortedarr: [],
-        arrLength:4,
+        arrLength:24,
         ANIMATION_SPEED_MS: 30,              
         //sortedarr: mergeSort(Array.from(array))
     }
@@ -51,8 +45,12 @@ export default {
     },
     changeArrayLength: function(){
       const element = document.getElementById("changeSize");
-      this.arrLength = element.value ;      
+      this.arrLength = element.value ;
+      this.regenerateRandomArray();      
     }    
+  },
+  mounted: function(){
+    this.regenerateRandomArray();
   }     
 }
 
@@ -70,6 +68,47 @@ export default {
     font-family: sans-serif;
     font-weight: 700;
     display: inline-block;
+}
+
+.button {
+    color:black;
+    font-size: 16px;
+    font-family: monospace;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    background-color: #ccffff;
+}
+
+.button:hover{
+  background-color:#9999ff;
+}
+
+.upper{
+  background-color: burlywood;
+  margin-top: 0px;
+}
+
+.bottom{
+  margin-top: 60px; 
+}
+
+.box1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.box2{
+  margin-top: 30px;
+}
+
+body{
+  background-color: #ccffff;
+}
+
+label{
+  color:mediumblue;
 }
 
 </style>
