@@ -1,12 +1,14 @@
 <template>
 <html>
   <body>
-    <div>   
+    <div>
+      <h1>{{sortedarr}}</h1>   
       <div>
         <button class="button" id="buttongen" v-on:click="regenerateRandomArray" :disabled="isdisabled">Generate New Array</button>
         <label> Change Array Size & Speed </label>      
         <input :disabled="isdisabled" type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">       
-        <button class="button" id="buttonsort" v-on:click="reMergeSort" :disabled="isdisabled">Merge Sort</button>                 
+        <button class="button" id="btnmerge" v-on:click="reMergeSort" :disabled="isdisabled">Merge Sort</button>
+        <button class="button" id="btnbubble" v-on:click="bubbleSort" :disabled="isdisabled">Bubble Sort</button>                                  
       </div>        
     </div>
     <div class="bottom">    
@@ -29,6 +31,7 @@
 
 <script>
 import mergeSort from '../..//src/mergeSort'
+import bubbleSort from '../..//src/bubbleSort'
 import generateRandomArray from '../..//src/generateRandomArray'
 import generateBlocks from '../..//src/generateBlocks'
 
@@ -61,7 +64,10 @@ export default {
       const element = document.getElementById("changeSize");
       this.arrLength = element.value ;
       this.regenerateRandomArray();      
-    }    
+    },
+    bubbleSort: function(){
+        this.sortedarr = bubbleSort(this.arr)
+    },    
   },
   mounted: function(){
     this.regenerateRandomArray();
