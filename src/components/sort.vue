@@ -1,8 +1,7 @@
 <template>
 <html>
   <body>
-    <div>
-      <h1>{{sortedarr}}</h1>   
+    <div>         
       <div>
         <button class="button" id="buttongen" v-on:click="regenerateRandomArray" :disabled="isdisabled">Generate New Array</button>
         <label> Change Array Size & Speed </label>      
@@ -14,8 +13,10 @@
     <div class="bottom">    
       <label> Main Array </label>    
       <div class="box1" id="idbox"></div>
-      <label> Auxiliary Array </label>
-      <div class="box2" id="idbox2"></div>   
+      <div v-show="isauxvisible">
+        <label> Auxiliary Array </label>
+        <div class="box2" id="idbox2"></div> 
+      </div>        
     </div>
     <div style="display:none">
       <audio id="myAudio" controls>
@@ -23,6 +24,9 @@
       </audio>
       <audio id="myAudio2" controls>
         <source src="../..//src/assets/DM-CGS-34.wav" type="audio/wav">  
+      </audio>
+       <audio id="myAudio3" controls>
+        <source src="../..//src/assets/DM-CGS-16.wav" type="audio/wav">  
       </audio>
       </div>  
   </body>
@@ -43,7 +47,8 @@ export default {
         sortedarr: [],
         arrLength:24,
         ANIMATION_SPEED_MS: 30,
-        isdisabled:false,              
+        isdisabled:false,
+        isauxvisible:false,             
         //sortedarr: mergeSort(Array.from(array))
     }
 }, 
@@ -53,7 +58,9 @@ export default {
         generateBlocks(this.arr)        
     },
     reMergeSort: function(){
+        this.regenerateRandomArray();
         this.isdisabled = true;
+        this.isauxvisible = true; 
         this.ANIMATION_SPEED_MS = (1000 / this.arr.length)
         const animLength = mergeSort(this.arr, this.ANIMATION_SPEED_MS)
          setTimeout(() => {
@@ -66,7 +73,14 @@ export default {
       this.regenerateRandomArray();      
     },
     bubbleSort: function(){
-        this.sortedarr = bubbleSort(this.arr)
+        this.regenerateRandomArray();
+        this.isauxvisible = false;
+        this.isdisabled = true;
+        this.ANIMATION_SPEED_MS = (3000 / Math.pow(this.arr.length, 3/2)) 
+        const animLength = bubbleSort(this.arr, this.ANIMATION_SPEED_MS)
+         setTimeout(() => {
+          this.isdisabled = false;
+        }, (animLength + 1) * this.ANIMATION_SPEED_MS);  
     },    
   },
   mounted: function(){
