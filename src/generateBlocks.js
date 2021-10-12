@@ -1,37 +1,38 @@
 function generateBlocks(arr){
-    let element = document.getElementById('idbox');
-    var child = element.lastElementChild; 
+    let mainArrBlocks = document.getElementById('mainArr')
+    removeChildNodes(mainArrBlocks)
+    createBlocks(mainArrBlocks, arr)          
+    createDummyBlock(mainArrBlocks)
+
+    let auxArr = document.getElementById('auxArr')
+    removeChildNodes(auxArr)
+    createBlocks(auxArr, arr)   
+}
+
+function removeChildNodes(element){
+    var child = element.lastElementChild
     while (child) {
-        element.removeChild(child);
-        child = element.lastElementChild;
+        element.removeChild(child)
+        child = element.lastElementChild
     }
-    var dummy_ele = document.createElement("div");
-    dummy_ele.classList.add("box");      
-    dummy_ele.style.height = `180px`;
-    dummy_ele.style.width = `0.01px`;      
-    for(let i = 0 ; i < arr.length; i++){        
-        var array_ele = document.createElement("div");    
-        array_ele.classList.add("box");      
-        array_ele.style.height = `${arr[i] * 2}px`; 
-        array_ele.style.width = `${600 / arr.length}px`;          
-        element.append(array_ele);
-    }
+}
+
+function createDummyBlock(element){
+    var dummy_ele = document.createElement("div")
+    dummy_ele.classList.add("box")   
+    dummy_ele.style.height = `180px`
+    dummy_ele.style.width = `0.01px`
     element.append(dummy_ele)
-    element.style.left = `${(screen.width-(arr.length*10))/2}px`;
-    let element2 = document.getElementById('idbox2');
-    var child2 = element2.lastElementChild; 
-    while (child2) {
-        element2.removeChild(child2);
-        child2 = element2.lastElementChild;
-    }    
-    for(let i = 0 ; i < arr.length; i++){        
-        var array_ele2 = document.createElement("div");    
-        array_ele2.classList.add("box");      
-        array_ele2.style.height = `${arr[i] * 2}px`; 
-        array_ele2.style.width = `${600 / arr.length}px`;           
-        element2.append(array_ele2);
+}
+
+function createBlocks(element, arr){        
+    for(let i = 0 ; i < arr.length; i++){              
+        var block = document.createElement("div") 
+        block.classList.add("box") 
+        block.style.height = `${arr[i] * 2}px`
+        block.style.width = `${600 / arr.length}px`        
+        element.append(block)
     }
-    element2.style.left = `${(screen.width-(arr.length*10))/2}px`;  
 }
 
 export default generateBlocks;

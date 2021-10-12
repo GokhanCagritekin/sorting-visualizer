@@ -3,19 +3,19 @@
   <body>
     <div>         
       <div>
-        <button class="button" id="buttongen" v-on:click="regenerateRandomArray" :disabled="isdisabled">Generate New Array</button>
+        <button class="button" v-on:click="generateRandomArray" :disabled="isdisabled">Generate New Array</button>
         <label> Change Array Size & Speed </label>      
         <input :disabled="isdisabled" type="range" min="4" max="104" value="40" id="changeSize" @change="changeArrayLength" style="background: white; cursor: pointer;">       
-        <button class="button" id="btnmerge" v-on:click="reMergeSort" :disabled="isdisabled">Merge Sort</button>
-        <button class="button" id="btnbubble" v-on:click="bubbleSort" :disabled="isdisabled">Bubble Sort</button>                                  
+        <button class="button" v-on:click="mergeSort" :disabled="isdisabled">Merge Sort</button>
+        <button class="button" v-on:click="bubbleSort" :disabled="isdisabled">Bubble Sort</button>                                  
       </div>        
     </div>
     <div class="bottom">    
       <label> Main Array </label>    
-      <div class="box1" id="idbox"></div>
+      <div class="box1" id="mainArr"></div>
       <div v-show="isauxvisible">
         <label> Auxiliary Array </label>
-        <div class="box2" id="idbox2"></div> 
+        <div class="box2" id="auxArr"></div> 
       </div>        
     </div>
     <div style="display:none">
@@ -43,51 +43,48 @@ export default {
   name: 'sort',
   data () {
     return {
-        arr:[],
-        sortedarr: [],
+        arr:[],        
         arrLength:24,
         ANIMATION_SPEED_MS: 30,
         isdisabled:false,
-        isauxvisible:false,             
-        //sortedarr: mergeSort(Array.from(array))
+        isauxvisible:false,                     
     }
 }, 
  methods:{
-    regenerateRandomArray: function () {
+    generateRandomArray: function () {
         this.arr = generateRandomArray(this.arrLength)
         generateBlocks(this.arr)        
     },
-    reMergeSort: function(){
-        this.regenerateRandomArray();
-        this.isdisabled = true;
-        this.isauxvisible = true; 
+    mergeSort: function(){
+        this.generateRandomArray()
+        this.isdisabled = true
+        this.isauxvisible = true
         this.ANIMATION_SPEED_MS = (1000 / this.arr.length)
         const animLength = mergeSort(this.arr, this.ANIMATION_SPEED_MS)
          setTimeout(() => {
-          this.isdisabled = false;
+          this.isdisabled = false
         }, (animLength + 1) * this.ANIMATION_SPEED_MS);         
     },
     changeArrayLength: function(){
-      const element = document.getElementById("changeSize");
-      this.arrLength = element.value ;
-      this.regenerateRandomArray();      
+      const element = document.getElementById("changeSize")
+      this.arrLength = element.value 
+      this.generateRandomArray()     
     },
     bubbleSort: function(){
-        this.regenerateRandomArray();
-        this.isauxvisible = false;
-        this.isdisabled = true;
+        this.generateRandomArray()
+        this.isauxvisible = false
+        this.isdisabled = true
         this.ANIMATION_SPEED_MS = (3000 / Math.pow(this.arr.length, 3/2)) 
         const animLength = bubbleSort(this.arr, this.ANIMATION_SPEED_MS)
          setTimeout(() => {
-          this.isdisabled = false;
-        }, (animLength + 1) * this.ANIMATION_SPEED_MS);  
+          this.isdisabled = false
+        }, (animLength + 1) * this.ANIMATION_SPEED_MS) 
     },    
   },
   mounted: function(){
-    this.regenerateRandomArray();
+    this.generateRandomArray()
   }     
 }
-
 </script>
 
 <style>
@@ -116,11 +113,6 @@ export default {
 
 .button:hover{
   background-color:#9999ff;
-}
-
-.upper{
-  background-color: burlywood;
-  margin-top: 0px;
 }
 
 .bottom{
