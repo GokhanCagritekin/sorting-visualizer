@@ -40,8 +40,8 @@ function mergeSort(mainArray, ANIMATION_SPEED_MS){
             }                             
         }
         setTimeout(() => {
-          const audio = document.getElementById("myAudio");
-          audio.play();                             
+          const finalAudio = document.getElementById("myAudio");
+          finalAudio.play();                             
         }, animations.length * ANIMATION_SPEED_MS);        
         return animations.length;                            
     }       
