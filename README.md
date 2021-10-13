@@ -1,5 +1,9 @@
 # sorting-visualizer
 
+## Sorting Visualizer
+
+You can access it here (use Google Chrome!): https://gokhancagritekin.github.io/sorting-visualizer/
+
 ## Project setup
 ```
 npm install
