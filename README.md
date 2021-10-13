@@ -2,7 +2,7 @@
 
 ## Sorting Visualizer
 
-How the project looks like? https://gokhancagritekin.github.io/sorting-visualizer/ (use Google Chrome)
+Live -> https://gokhancagritekin.github.io/sorting-visualizer/ (use Google Chrome)
 
 ## Project setup
 ```
